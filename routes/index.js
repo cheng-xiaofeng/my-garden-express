@@ -12,7 +12,10 @@ router.get('/', function(req, res, next) {
   res.header('Access-Control-Allow-Credentials', true)
   console.log(req);
   
-  res.send("how are you")
+  res.send({
+    code: 200,
+    data: '你好,请求成功'
+  })
 });
 
 module.exports = router;
