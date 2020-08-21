@@ -1,21 +1,9 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-const kettySchema = mongoose.Schema({
+const catsSchema = new Schema({
   name: String
 })
 
-kettySchema.methods.speak = function () {
-  const greeting = this.name?
-  `kitty name is ${this.name}` : 'i dont know'
-  console.log(greeting)
-}
-const Kitten = mongoose.model('Kitten', kettySchema)
+module.exports = mongoose.model('cat', catsSchema)
 
-const miao = new Kitten({name: 'miao'})
-miao.speak()
-miao.save(function (err, miao) {
-  if (err) {
-    return console.error(err);
-  }
-  console.log(miao)
-})
