@@ -27,6 +27,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('*', function(req, res, next) {
+  // res.render('index', { title: 'Express' });
+  res.header("Access-Control-Allow-Origin",'http://localhost:3001' || 'http://localhost:3000' || 'http://localhost:3002');
+  //允许的header类型
+  res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  //跨域允许的请求方式 
+  res.header("Access-Control-Allow-Methods","DELETE,PUT,POST,GET,OPTIONS");
+  res.header('Access-Control-Allow-Credentials', true)
+  next()
+});
 routeFun(app)
 
 // catch 404 and forward to error handler
